@@ -1,0 +1,62 @@
+{% extends 'quiz/layout.html' %}
+{% load static %}
+
+{% block title %}
+    {{ theme.name }} Quiz - Quotes & Quizzes
+{% endblock %}
+
+{% block css %}
+    <link href="{% static 'quiz/css/quiz.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'quiz/javascript/quiz.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+
+    <section>
+        
+        <h1 id="heading-theme" data-theme="{{ theme.name }}" data-themeid="{{ theme.quiz_id }}">{{ theme.name }} quiz</h1>
+
+        <div class="content-container" id="start-content">
+            <p>10 questions, 10 seconds to answer</p>
+            <button id="start-btn">Start</button>
+        </div>
+
+        <div class="content-container" id="during-content" style="display: none;">
+            <p id="round-para">Question 1/10</p>
+            <p id="quiz-difficulty"></p>
+            <p class="second-countdown">10</p>
+            <span class="countdown-bar"></span>
+            <p id="quiz-para" data-round="0"></p>
+            <div class="btn-div" id="multiple-div" style="display: none;">
+                <button class="btn-answer multi-btn-answer"></button>
+                <button class="btn-answer multi-btn-answer"></button>
+                <button class="btn-answer multi-btn-answer"></button>
+                <button class="btn-answer multi-btn-answer"></button>
+            </div>
+            <div class="btn-div" id="boolean-div" style="display: none;">
+                <button class="btn-answer bool-btn-answer" value="True">True</button>
+                <button class="btn-answer bool-btn-answer" value="False">False</button>
+            </div>
+        </div>
+
+        <div class="content-container" id="end-content" style="display: none;">
+            <p id="score-para"></p>
+            <a class="restart-link" href="{% url 'quiz:quiz' theme.name %}"><span>Restart</span></a>
+            <p class="sm-text">
+                Want to check the 
+                <a class="sm-link" href="{% url 'quiz:leaderboard' %}">leaderboard</a> 
+                ?
+            </p>
+            <p class="sm-text">
+                Or go back to 
+                <a class="sm-link" href="{% url 'quiz:themes' %}">themes</a>
+                to try another quiz!
+            </p>
+        </div>
+
+    </section>
+
+{% endblock %}

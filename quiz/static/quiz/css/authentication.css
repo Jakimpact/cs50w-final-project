@@ -1,0 +1,87 @@
+/* Register and Log in html */
+
+section {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 2em;
+    color: #DC143C;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 350px;
+    margin-bottom: 20px;
+}
+
+.form-container input {
+    padding: 5px 10px;
+    border: 1px solid #DC143C;
+    border-radius: 10px;
+    font-size: 1em;
+}
+
+.form-container input:focus-visible {
+    outline: 2px auto #DC143C;
+}
+
+.form-row-btn {
+    display: flex;
+    justify-content: center;
+}
+
+.form-row-btn button {
+    width: 160px;
+    height: 40px;
+    margin: 20px 0px;
+    border-radius: 60px;
+    border-width: 0px;
+    background-color: #DC143C;
+    font-size: 1.1em;
+    color: white;
+}
+
+.form-row-btn button:hover {
+    background-color: white;
+    color: #DC143C;
+    border: solid 2px #DC143C;
+}
+
+.sm-text {
+    font-size: 0.9em;
+}
+
+.sm-text a {
+    color: black;
+}
+
+.sm-text a:hover {
+    font-weight: bold;
+}
+
+/* CSS for mobile devices */ 
+@media screen and (max-width: 600px) {
+    
+    .form-row {
+        flex-direction: column;
+        width: 300px;
+    }
+
+    .form-row label {
+        margin-bottom: 5px;
+    }
+}

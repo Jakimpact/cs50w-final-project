@@ -1,0 +1,40 @@
+{% extends 'quiz/layout.html' %}
+{% load static %}
+
+{% block title %}
+    Themes - Quotes & Quizzes
+{% endblock %}
+
+{% block css %}
+    <link href="{% static 'quiz/css/themes.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+
+    <div class="main-container">
+
+        <section>
+            <h1>Quote themes</h1>
+            <div class="themes-container quote-category">
+                {% for quote in quotes %}
+                    <div class="theme-div">
+                        <a href="{% url 'quiz:quote' quote.name %}"><span>{{ quote.name }}</span></a>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section>
+            <h1>Quiz themes</h1>
+            <div class="themes-container quiz-category">
+                {% for quiz in quizzes %}
+                    <div class="theme-div">
+                        <a href="{% url 'quiz:quiz' quiz.name %}"><span>{{ quiz.name }}</span></a>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+
+    </div>
+    
+{% endblock %}

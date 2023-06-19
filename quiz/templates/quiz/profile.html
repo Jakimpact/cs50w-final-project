@@ -1,0 +1,148 @@
+{% extends 'quiz/layout.html' %}
+{% load static %}
+
+{% block title %}
+    {{ score.user.username }} Profile Page - Quotes & Quizzes
+{% endblock %}
+
+{% block css %}
+    <link href="{% static 'quiz/css/profile.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'quiz/javascript/score.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+
+    <section id="main-section" data-page="profile">
+
+        <h1>{{ score.user.username }} profile</h1>
+        
+        <div class="overall-div">
+
+            <div class="overall-category">
+                <h2>Overall quote score</h2>
+                {% if score.total_quote == 0 %}
+                    <p>No quote made in this category.</p>
+                {% else %}
+                    <div class="table-container">
+                        <table class="overall-table">
+                            <thead>
+                                <tr>
+                                    <th>Total quotes</th>
+                                    <th>Total score</th>
+                                    <th>Average</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{ score.total_quote }} quotes</td>
+                                    <td>{{ score.quote_score }} points</td>
+                                    <td>{{ score.quote_average.average|floatformat:2 }} / 10</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="overall-category">
+                <h2>Overall quiz score</h2>
+                {% if score.total_quiz == 0 %}
+                    <p>No quiz made in this category.</p>
+                {% else %}
+                    <div class="table-container">
+                        <table class="overall-table">
+                            <thead>
+                                <tr>
+                                    <th>Total quizzes</th>
+                                    <th>Total score</th>
+                                    <th>Average</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{ score.total_quiz }} quizzes</td>
+                                    <td>{{ score.quiz_score }} points</td>
+                                    <td>{{ score.quiz_average.average|floatformat:2 }} / 10</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+            </div>
+
+        </div>
+
+        <div class="cta-container">
+            <h2>View details of themes:</h2>
+            <div class="cta-div">
+                <button class="profile-btn" data-category="quote">Quote themes</button>
+                <button class="profile-btn" data-category="quiz">Quiz themes</button>
+            </div>
+        </div>
+
+        <div class="themes-div quote-category" style="display: none;">
+            <h2>Quote themes</h2>
+            <div class="table-container">
+                <table class="theme-table" id="quote-themes-table">
+                    <thead>
+                        <tr>
+                            <th>Theme</th>
+                            <th>Total quotes</th>
+                            <th>Total score</th>
+                            <th>Average</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for quote_score in quote_scores %}
+                            <tr>
+                                <td value="{{ quote_score.theme.name }}">{{ quote_score.theme.name }}</td>
+                                <td value="{{ quote_score.total }}">{{ quote_score.total }} quotes</td>
+                                <td value="{{ quote_score.score }}">{{ quote_score.score }} points</td>
+                                <td value="{{ quote_score.theme_average.average }}">{{ quote_score.theme_average.average|floatformat:2 }} / 10</td>                
+                            </tr>
+                        {% empty %}
+                            <tr class="empty-row">
+                                <td colspan="4">No theme done in the quote category.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="themes-div quiz-category" style="display: none;">
+            <h2>Quiz themes</h2>
+            <div class="table-container">
+                <table class="theme-table" id="quiz-themes-table">
+                    <thead>
+                        <tr>
+                            <th>Theme</th>
+                            <th>Total quotes</th>
+                            <th>Total score</th>
+                            <th>Average</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for quiz_score in quiz_scores %}
+                            <tr>
+                                <td value="{{ quiz_score.theme.name }}">{{ quiz_score.theme.name }}</td>
+                                <td value="{{ quiz_score.total }}">{{ quiz_score.total }} quizzes</td>
+                                <td value="{{ quiz_score.score }}">{{ quiz_score.score }} points</td>
+                                <td value="{{ quiz_score.theme_average.average }}">{{ quiz_score.theme_average.average|floatformat:2 }} / 10</td>
+                            </tr>
+                        {% empty %}
+                            <tr class="empty-row">
+                                <td colspan="4">No theme done in the quiz category.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </section>
+    
+    {% endblock %}

@@ -1,0 +1,132 @@
+{
+    "theme1": {
+        "name": "General Knowledge",
+        "category": "qui",
+        "quiz_id": 9
+    },
+    "theme2": {
+        "name": "Entertainment: Books",
+        "category": "qui",
+        "quiz_id": 10
+    },
+    "theme3": {
+        "name": "Entertainment: Film",
+        "category": "qui",
+        "quiz_id": 11
+    },
+    "theme4": {
+        "name": "Entertainment: Music",
+        "category": "qui",
+        "quiz_id": 12
+    },
+    "theme5": {
+        "name": "Entertainment: Musicals & Theatres",
+        "category": "qui",
+        "quiz_id": 13
+    },
+    "theme6": {
+        "name": "Entertainment: Television",
+        "category": "qui",
+        "quiz_id": 14
+    },
+    "theme7": {
+        "name": "Entertainment: Video Games",
+        "category": "qui",
+        "quiz_id": 15
+    },
+    "theme8": {
+        "name": "Entertainment: Board Games",
+        "category": "qui",
+        "quiz_id": 16
+    },
+    "theme9": {
+        "name": "Science & Nature",
+        "category": "qui",
+        "quiz_id": 17
+    },
+    "theme10": {
+        "name": "Science: Computers",
+        "category": "qui",
+        "quiz_id": 18
+    },
+    "theme11": {
+        "name": "Science: Mathematics",
+        "category": "qui",
+        "quiz_id": 19
+    },
+    "theme12": {
+        "name": "Mythology",
+        "category": "qui",
+        "quiz_id": 20
+    },
+    "theme13": {
+        "name": "Sports",
+        "category": "qui",
+        "quiz_id": 21
+    },
+    "theme14": {
+        "name": "Geography",
+        "category": "qui",
+        "quiz_id": 22
+    },
+    "theme15": {
+        "name": "History",
+        "category": "qui",
+        "quiz_id": 23
+    },
+    "theme16": {
+        "name": "Politics",
+        "category": "qui",
+        "quiz_id": 24
+    },
+    "theme17": {
+        "name": "Art",
+        "category": "qui",
+        "quiz_id": 25
+    },
+    "theme18": {
+        "name": "Celebrities",
+        "category": "qui",
+        "quiz_id": 26
+    },
+    "theme19": {
+        "name": "Animals",
+        "category": "qui",
+        "quiz_id": 27
+    },
+    "theme20": {
+        "name": "Vehicles",
+        "category": "qui",
+        "quiz_id": 28
+    },
+    "theme21": {
+        "name": "Entertainment: Comics",
+        "category": "qui",
+        "quiz_id": 29
+    },
+    "theme22": {
+        "name": "Science: Gadgets",
+        "category": "qui",
+        "quiz_id": 30
+    },
+    "theme23": {
+        "name": "Entertainment: Japanese Anime & Manga",
+        "category": "qui",
+        "quiz_id": 31
+    },
+    "theme24": {
+        "name": "Entertainment: Cartoon & Animations",
+        "category": "qui",
+        "quiz_id": 32
+    },
+    "theme25": {
+        "name": "Breaking Bad",
+        "category": "quo",
+        "quiz_id": 0
+    },
+    "theme26": {
+        "name": "Game of Thrones",
+        "category": "quo",
+        "quiz_id": 1
+    }
+}

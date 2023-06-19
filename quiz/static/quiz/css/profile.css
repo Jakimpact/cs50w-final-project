@@ -1,0 +1,133 @@
+/* profile html */
+
+section {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 2em;
+    color: #DC143C;
+}
+
+.overall-div {
+    width: 80%;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    column-gap: 20px;
+}
+
+.overall-category {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.3em;
+    color: #DC143C;
+    font-weight: normal;
+    text-align: center;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+.overall-table,
+.theme-table {
+    border: 1px solid #DC143C;
+    border-radius: 10px;
+    border-spacing: 0;
+    border-collapse: separate;
+    background-color: white;
+}
+
+.overall-table th, .overall-table td,
+.theme-table th, .theme-table td {
+    padding: 20px;
+}
+
+.overall-table th:not(:last-child),
+.overall-table td:not(:last-child),
+.theme-table th:not(:last-child),
+.theme-table td:not(:last-child) {
+    border-right: 1px solid #DC143C;
+}
+
+.overall-table tr th,
+.overall-table tr:not(:last-child) td,
+.theme-table tr th,
+.theme-table tr:not(:last-child) td {
+    border-bottom: 1px solid #DC143C;
+} 
+
+.overall-table tr:hover,
+.theme-table tr:hover {
+    color: #DC143C;
+    font-weight: bold;
+}
+
+.cta-container {
+    width: 70%;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+}
+
+.cta-div {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    column-gap: 20px;
+    row-gap: 20px;
+}
+
+.profile-btn {
+    width: 150px;
+    height: 60px;
+    border: solid 1px #DC143C;
+    border-radius: 10px;
+    background: linear-gradient(180deg, #FFFAF0 0%, rgba(255, 250, 240, 0) 100%);
+    color: #DC143C;
+    font-size: 1.1em;
+}
+
+.profile-btn:hover {
+    background: linear-gradient(180deg, #DC143C 50%, rgba(220, 20, 60, 0) 100%);
+    color: white;
+}
+
+.themes-div {
+    width: 80%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.empty-row {
+    text-align: center;
+}
+
+
+/* CSS for mobile devices */
+
+@media screen and (max-width: 600px) {
+    
+    .theme-table th, .theme-table td {
+        padding: 10px;
+    }
+}

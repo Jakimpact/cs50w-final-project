@@ -1,0 +1,62 @@
+/* themes html */
+
+.main-container {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 2em;
+    color: #DC143C;
+}
+
+.themes-container {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.quiz-category .theme-div {
+    margin: 20px;
+}
+
+.theme-div a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    height: 65px;
+    border: solid 1px #DC143C;
+    border-radius: 10px;
+    background: linear-gradient(180deg, #FFFAF0 0%, rgba(255, 250, 240, 0) 100%);
+    color: #DC143C;
+    text-decoration: none;
+    text-align: center;
+}
+
+.theme-div a:hover {
+    background: linear-gradient(180deg, #DC143C 50%, rgba(220, 20, 60, 0) 100%);
+    color: white;
+}
+
+/* CSS for mobile devices */
+
+@media screen and (max-width: 600px) {
+
+    .quote-category {
+        flex-direction: column;
+        align-content: center;
+        gap: 40px;
+    }    
+}

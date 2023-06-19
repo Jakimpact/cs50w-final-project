@@ -1,0 +1,57 @@
+{% extends 'quiz/layout.html' %}
+{% load static %}
+
+{% block title %}
+    {{ theme.name }} Quote - Quotes & Quizzes
+{% endblock %}
+
+{% block css %}
+    <link href="{% static 'quiz/css/quiz.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'quiz/javascript/quote.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+
+    <section>
+        
+        <h1 id="heading-theme" data-theme="{{ theme.name }}">{{ theme.name }} quote</h1>
+
+        <div class="content-container" id="start-content">
+            <p>10 questions, 10 seconds to answer</p>
+            <button id="start-btn">Start</button>
+        </div>
+
+        <div class="content-container" id="during-content" style="display: none;">
+            <p id="round-para">Question 1/10</p>
+            <p class="second-countdown">10</p>
+            <span class="countdown-bar"></span>
+            <p id="quote-para" data-round="0"></p>
+            <div class="btn-div">
+                <button class="btn-answer"></button>
+                <button class="btn-answer"></button>
+                <button class="btn-answer"></button>
+                <button class="btn-answer"></button>
+            </div>
+        </div>
+
+        <div class="content-container" id="end-content" style="display: none;">
+            <p id="score-para"></p>
+            <a class="restart-link" href="{% url 'quiz:quote' theme.name %}"><span>Restart</span></a>
+            <p class="sm-text">
+                Want to check the 
+                <a class="sm-link" href="{% url 'quiz:leaderboard' %}">leaderboard</a> 
+                ?
+            </p>
+            <p class="sm-text">
+                Or go back to 
+                <a class="sm-link" href="{% url 'quiz:themes' %}">themes</a>
+                to try another quiz!
+            </p>
+        </div>
+
+    </section>
+
+{% endblock %}

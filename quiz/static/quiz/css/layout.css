@@ -1,0 +1,86 @@
+/* Layout hmtl */
+
+body {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1em;
+}
+
+.header-nav {
+    margin-right: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-nav a {
+    text-decoration: none;
+    color: black;
+}
+
+.header-nav a:hover {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.header-nav div a {
+    padding: 0px 15px;
+}
+
+.img-logo {
+    width: 150px;
+    height: 100px;
+}
+
+.img-logo:hover {
+    opacity: 0.5;
+}
+
+main {
+    padding: 20px 30px;
+    background-color: #FFFAF0;
+}
+
+.message-div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 5px;
+
+}
+
+.footer-div {
+    margin-right: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* CSS for mobile devices */ 
+@media screen and (max-width: 600px) {
+
+    .header-nav {
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 10px;
+        margin-right: 0px;
+    }
+
+    .header-nav div a {
+        padding: 0px 5px;
+    }
+
+    main {
+        padding: 10px 15px;
+    }
+
+    .footer-div {
+        flex-direction: column;
+        justify-content: center;
+        margin-right: 0px;
+    }
+}

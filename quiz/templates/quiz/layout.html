@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}{% endblock %}</title>
+        <link href="{% static 'quiz/css/layout.css' %}" rel="stylesheet">
+        {% block css %}{% endblock %}
+        {% block script %}{% endblock %}
+    </head>
+
+    <body>
+
+        <header>
+            <nav class="header-nav">
+                <a href="{% url 'quiz:index' %}">
+                    <img class="img-logo" src="{% static 'quiz/images/logo.png' %}" alt="Quotes and Quizzes logo">
+                </a>
+                <div>
+                    <a href="{% url 'quiz:themes' %}">Themes</a>
+                    <a href="{% url 'quiz:leaderboard' %}">Leaderboard</a>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'quiz:profile' request.user %}">Profile</a>
+                        <a href="{% url 'quiz:logout' %}">Log Out</a>
+                    {% else %}
+                        <a href="{% url 'quiz:login' %}">Log In</a>
+                        <a href="{% url 'quiz:register' %}">Register</a>
+                    {% endif %}
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            {% if message %}
+                <div class="message-div">{{ message }}</div>
+            {% endif %}
+            {% block body %}
+            {% endblock %}
+        </main>
+        
+        <footer>
+            <div class="footer-div">
+                <a href="{% url 'quiz:index' %}">
+                    <img class="img-logo" src="{% static 'quiz/images/logo.png' %}" alt="Quotes and Quizzes logo">
+                </a>
+                <p>@2023 - CS50W Final Project</p>
+            </div>
+        </footer>
+
+    </body>
+
+</html>

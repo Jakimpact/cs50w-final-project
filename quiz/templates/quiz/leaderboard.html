@@ -1,0 +1,237 @@
+{% extends 'quiz/layout.html' %}
+{% load static %}
+
+{% block title %}
+    Leaderboard - Quotes & Quizzes
+{% endblock %}
+
+{% block css %}
+    <link href="{% static 'quiz/css/leaderboard.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'quiz/javascript/score.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+
+    <section id="main-section" data-page="leaderboard">
+
+        <h1>Leaderboard</h1>
+
+        <div class="cta-container">
+            <p>In order to be ranked in a category, you need to do 10 quiz in this category (same for a theme).</p>
+            <p>In the leaderboard tables, users are ranked by the highest average.</p>
+            <div class="cta-div">
+                <button class="category-btn" data-category="quote">Quote leaderboard</button>
+                <button class="category-btn" data-category="quiz">Quiz leaderboard</button>
+            </div>
+            <div class="cta-div">
+                <div class="dropdown">
+                    <button class="theme-btn">Quote themes</button>
+                    <div class="dropdown-content">
+                        {% for theme in quote_themes %}
+                            <p class="theme">{{ theme.name }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="theme-btn">Quiz themes</button>
+                    <div class="dropdown-content">
+                        {% for theme in quiz_themes %}
+                            <p class="theme">{{ theme.name }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-container quote-category">
+
+            <h2>Quote overall statistics</h2>
+            <div class="table-container">
+                <table class="overall-table">
+                    <thead>
+                        <tr>
+                            <th>Total quotes</th>
+                            <th>Total score</th>
+                            <th>Average</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ overall.overall_total_quote }} quotes</td>
+                            <td>{{ overall.overall_quote_score }} points</td>
+                            <td>{{ overall.overall_quote_average|floatformat:2 }} / 10</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Quote leaderboard</h2>
+            <div class="table-container">
+                <table class="leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Total quotes</th>
+                            <th>Total score</th>
+                            <th>Average</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user_lead in quote_leaderboard %}
+                            <tr>
+                                <td data-username="{{ user_lead.user.username }}"><b>{{ forloop.counter }}</b> - {{ user_lead.user.username }}</td>
+                                <td>{{ user_lead.total }} quotes</td>
+                                <td>{{ user_lead.score }} points</td>
+                                <td>{{ user_lead.average|floatformat:2 }} / 10</td>
+                            </tr>
+                        {% empty %}
+                            <tr class="empty-row">
+                                <td colspan="4">No users ranked in the quote category.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                    {% if user.is_authenticated and user_score != 0 %}
+                        {% if user_score.total_quote != 0 %}
+                            <tfoot>
+                                <tr>
+                                    <td>{{ user_score.user.username }}</td>
+                                    <td>{{ user_score.total_quote }} quotes</td>
+                                    <td>{{ user_score.quote_score }} points</td>
+                                    <td>{{ user_score.quote_average.average|floatformat:2 }} / 10</td>
+                                </tr>
+                            </tfoot>
+                        {% endif %}
+                    {% endif %}
+                </table>
+                {% if user.is_authenticated %}
+                    {% if user_score == 0 %}
+                        <p class="sm-text">You've done no quote in this category.</p>
+                    {% elif user_score != 0 and user_score.total_quote == 0 %}
+                        <p class="sm-text">You've done no quote in this category.</p>
+                    {% endif %}
+                {% endif %}
+            </div>
+
+        </div>
+        
+        <div class="content-container quiz-category">
+
+            <h2>Quiz overall statistics</h2>
+            <div class="table-container">
+                <table class="overall-table">
+                    <thead>
+                        <tr>
+                            <th>Total quizzes</th>
+                            <th>Total score</th>
+                            <th>Average</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ overall.overall_total_quiz }} quizzes</td>
+                            <td>{{ overall.overall_quiz_score }} points</td>
+                            <td>{{ overall.overall_quiz_average|floatformat:2 }} / 10</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Quiz leaderboard</h2>
+            <div class="table-container">
+                <table class="leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Total quizzes</th>
+                            <th>Total score</th>
+                            <th>Average</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user_lead in quiz_leaderboard %}
+                            <tr>
+                                <td data-username="{{ user_lead.user.username }}"><b>{{ forloop.counter }}</b> - {{ user_lead.user.username }}</td>
+                                <td>{{ user_lead.total }} quizzes</td>
+                                <td>{{ user_lead.score }} points</td>
+                                <td>{{ user_lead.average|floatformat:2 }} / 10</td>
+                            </tr>
+                        {% empty %}
+                            <tr class="empty-row">
+                                <td colspan="4">No users ranked in the quiz category.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                    {% if user.is_authenticated and user_score != 0 %}
+                        {% if user_score.total_quiz != 0 %}
+                        <tfoot>
+                            <tr>
+                                <td>{{ user_score.user.username }}</td>
+                                <td>{{ user_score.total_quiz }} quizzes</td>
+                                <td>{{ user_score.quiz_score }} points</td>
+                                <td>{{ user_score.quiz_average.average|floatformat:2 }} / 10</td>
+                            </tr>
+                        </tfoot>
+                        {% endif %}
+                    {% endif %}
+                </table>                        
+                {% if user.is_authenticated %}
+                    {% if user_score == 0 %}
+                        <p class="sm-text">You've done no quiz in this category.</p>
+                    {% elif user_score != 0 and user_score.total_quiz == 0 %}
+                        <p class="sm-text">You've done no quiz in this category.</p>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="content-container theme-container">
+
+            <h2 class="overall-h2"></h2>
+            <div class="table-container">
+                <table class="overall-table" id="theme-overall-table">
+                    <thead>
+                        <tr>
+                            <th>Total done</th>
+                            <th>Total score</th>
+                            <th>Average</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="leaderboard-h2"></h2>
+            <div class="table-container">
+                <table class="leaderboard-table" id="theme-leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Total done</th>
+                            <th>Total score</th>
+                            <th>Average</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <div class="sm-text">
+                </div>
+            </div>
+        </div>
+
+        <div class="empty-theme" style="display: none; flex-direction: column;">
+            
+        </div>
+        
+    </section>
+
+{% endblock %}

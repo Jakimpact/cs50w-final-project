@@ -1,0 +1,71 @@
+{% extends 'quiz/layout.html' %}
+{% load static %}
+
+{% block title %}
+    Quotes & Quizzes
+{% endblock %}
+
+{% block css %}
+    <link href="{% static 'quiz/css/index.css' %}" rel="stylesheet">
+{% endblock%}
+
+{% block body %}
+
+    <div class="main-container">
+
+        <section>
+
+            <h1>Quotes & Quizzes</h1>
+
+            <div class="para-container">
+                <p>This website was created for <em>CS50W final project</em>.</p>
+                <p>
+                    You can choose a <em>quiz</em> in either 
+                    the <em>quote</em> category or 
+                    the <em>quiz</em> one.
+                </p>
+                {% if not user.is_authenticated %}
+                    <p>
+                        <a href="{% url 'quiz:register' %}">Register</a> / 
+                        <a href="{% url 'quiz:login' %}">Log In</a> 
+                        to keep track of your <em>scores</em>.
+                    </p>
+                {% endif %}
+            </div>
+
+            {% if user.is_superuser %}
+                <div class="cta-div">
+                    <h2>Set up the database by clicking the button:</h2>
+                    <a href="{% url 'quiz:setup' %}"><span>Set up</span></a>
+                </div>
+            {% endif %}
+
+        </section>
+        
+        <section class="cta-container">
+
+            <div class="cta-div">
+                <h2>Go to Themes to choose a quiz:</h2>
+                <a href="{% url 'quiz:themes' %}"><span>Themes</span></a>
+            </div>
+            
+            <div class="cta-div">
+                <h2>Start a random quiz:</h2>
+                <a href="{% url 'quiz:random' %}"><span>Random quiz</span></a>
+            </div>
+
+        </section>
+
+        <section>
+            <div class="para-container">
+                <p>I want to thank and give credits to the creators of the free API I used to create the quizzes:</p>
+                <p><em>Open Trivia Database</em> - <a href="https://opentdb.com/api_config.php">https://opentdb.com/api_config.php</a></p>
+                <p><em>Shevabam</em> - <a href="https://github.com/shevabam/breaking-bad-quotes">https://github.com/shevabam/breaking-bad-quotes</a></p>
+                <p><em>Shevabam</em> - <a href="https://github.com/shevabam/game-of-thrones-quotes-api">https://github.com/shevabam/game-of-thrones-quotes-api</a></p>
+            </div>
+        </section>
+
+    </div>
+
+
+{% endblock %}

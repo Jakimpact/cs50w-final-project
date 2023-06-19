@@ -1,0 +1,159 @@
+/* profile html */
+
+section, .cta-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2em;
+    color: #DC143C;
+}
+
+.cta-container p {
+    margin-bottom: 0;
+}
+
+.cta-div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    margin-bottom: 35px;
+    gap: 20px;
+}
+
+.category-btn,
+.theme-btn {
+    width: 150px;
+    height: 60px;
+    border: solid 1px #DC143C;
+    border-radius: 10px;
+    background: linear-gradient(180deg, #FFFAF0 0%, rgba(255, 250, 240, 0) 100%);
+    color: #DC143C;
+    font-size: 1.1em;
+}
+
+.category-btn:hover {
+    background: linear-gradient(180deg, #DC143C 50%, rgba(220, 20, 60, 0) 100%);
+    color: white;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown:hover .theme-btn {
+    background: linear-gradient(180deg, #DC143C 50%, rgba(220, 20, 60, 0) 100%);
+    color: white;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content {
+    width: 100%;
+    max-height: 300px;
+    padding-bottom: 10px;
+    display: none;
+    position: absolute;
+    overflow: auto;
+    background-color: white;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content p:hover {
+    color: #DC143C;
+    font-weight: bold;
+}
+
+.content-container {
+    width: 80%;
+    margin-bottom: 15px;
+    display: none;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+}
+
+h2 {
+    font-size: 1.3em;
+    color: #DC143C;
+    font-weight: normal;
+    text-align: center;
+}
+
+.table-container {
+    overflow-x: auto;
+    margin: 20px 0px;
+}
+
+.overall-table,
+.leaderboard-table {
+    border: 1px solid #DC143C;
+    border-radius: 10px;
+    border-spacing: 0;
+    border-collapse: separate;
+    background-color: white;
+}
+
+.overall-table th, .overall-table td,
+.leaderboard-table th, .leaderboard-table td {
+    padding: 20px;
+}
+
+.overall-table th:not(:last-child),
+.overall-table td:not(:last-child),
+.leaderboard-table th:not(:last-child),
+.leaderboard-table td:not(:last-child) {
+    border-right: 1px solid #DC143C;
+}
+
+.overall-table tr th,
+.overall-table tr:not(:last-child) td,
+.leaderboard-table tr th,
+.leaderboard-table tr:not(:last-child) td {
+    border-bottom: 1px solid #DC143C;
+}
+
+.leaderboard-table tfoot td {
+    border-top: 2px solid #DC143C;
+    padding-top: 35px;
+    font-weight: bold;
+}
+
+.overall-table tr:hover,
+.leaderboard-table tr:hover {
+    color: #DC143C;
+    font-weight: bold;
+}
+
+.empty-row {
+    text-align: center;
+}
+
+.sm-text {
+    font-size: 0.9em;
+}
+
+div.sm-text {
+    margin-top: 10px;
+}
+
+/* CSS for mobile devices */
+
+@media screen and (max-width: 600px) {
+    
+    .leaderboard-table th, 
+    .leaderboard-table td {
+        padding: 10px;
+    }
+}

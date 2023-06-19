@@ -1,0 +1,41 @@
+{% extends "quiz/layout.html" %}
+{% load static %}
+
+{% block title %}
+    Log In - Quotes & Quizzes
+{% endblock %}
+
+{% block css %}
+    <link href="{% static 'quiz/css/authentication.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+
+    <section>
+
+        <h1>Log In</h1>
+        
+        <div class="form-container">
+            <form action="{% url 'quiz:login' %}" method="post">
+                {% csrf_token %}
+                <div class="form-row">
+                    <label>Username:</label>
+                    <input autofocus name="username" placeholder="Username" type="text">
+                </div>
+                <div class="form-row">
+                    <label>Password:</label>
+                    <input name="password" placeholder="Password" type="password">
+                </div>
+                <div class="form-row-btn">
+                    <button type="submit">Log In</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="sm-text">
+            Don't have an account ? <a href="{% url 'quiz:register' %}">Register here.</a>
+        </div>
+
+    </section>
+
+{% endblock %}
